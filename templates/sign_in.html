@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Waste Management System</title>
+	<style>
+		body {
+			background-image: url('https://png.pngtree.com/58pic/32/71/46/09K58PICWNfnyfraatSrj_PIC2018.jpg');
+			background-repeat: repeat;
+			background-size: 100%;
+			background-position: top right;
+		}
+		body,
+		input[type="text"],
+		input[type="password"] {
+			background-color: #222;
+			font-family: Arial, sans-serif;
+			color: #006A80;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 100px;
+			color: #006A80;
+		}
+		.green-button{
+			background-color: #4CAF50;
+			color:white;
+		}
+		form {
+			width: 300px;
+			margin: 0 auto;
+			margin-top: 50px;
+		}
+		input[type="text"],
+		input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: none;
+			border-radius: 3px;
+			background-color: #9FE2BF;
+			color: #222;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+			margin-top: 50px;
+			width: 600px;
+			margin: 0 auto;
+		}
+		.tab button {
+			background-color: #90EE90;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 51.40px;
+			transition: 0.3s;
+			font-size: 17px;
+			font-weight: bold;
+		}
+		.tab button:hover {
+			background-color: #006A80;
+		}
+		.tab button.active {
+			background-color: #B4C424;
+		}
+		.tabcontent {
+			display: none;
+			padding: 6px 32px;
+			border: 1px solid #9FE2BF;
+			border-top: none;
+			width: 500px;
+			margin: 0 auto;
+		}
+		.member img {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		object-fit: center;
+		margin-right: 10px; /* Adjust the margin as needed */
+  		}
+		  #about {
+		margin: 50px auto;
+		width: 80%;
+		text-align: center;
+		color: #333;
+		font-family: Arial, sans-serif;
+		}
+
+		h2 {
+			margin-bottom: 20px;
+			font-size: 24px;
+			font-weight: bold;
+			color: #006A80;
+		}
+
+		.member {
+			margin-bottom: 40px;
+		}
+
+		img {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		h3 {
+			margin-top: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.description {
+			margin-bottom: 10px;
+			font-size: 16px;
+			color: #666;
+		}
+
+		.content {
+			font-size: 18px;
+			color: #333;
+		}
+		.description {
+		margin: 25px;
+		color: #222;
+		font-family: Arial, sans-serif;
+		font-size: 17px;
+		line-height: 1.5;
+		font-weight: bold;
+  		}
+
+	</style>
+
+
+	<script>
+		// Function to switch between tabs
+		function openTab(evt, tabName) {
+			// Declare all variables
+			var i, tabcontent, tablinks;
+
+			// Get all elements with class="tabcontent" and hide them
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+
+			// Get all elements with class="tablinks" and remove the class "active"
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+
+			// Show the current tab, and add an "active" class to the button that opened the tab
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
+</head>
+
+
+<body>
+
+	<h1>Waste Management System</h1>
+	
+
+	<div class="tab">
+		<button class="tablinks" onclick="openTab(event, 'admin')">Admin</button>
+		<button class="tablinks" onclick="openTab(event, 'driver')">Driver</button>
+		<button class="tablinks" onclick="openTab(event, '/login_view')">User</button>
+
+	</div>
+
+	<div id="admin" class="tabcontent">
+		<form method="post" action="admin_login.php">
+			<label for="user_name">Username</label>
+			<input type="text" name="user_name" required>
+			<label for="password">Password</label>
+			<input type="password" name="password" required>
+			<input type="submit" value="Login">
+		</form>
+	</div>
+
+	<div id="driver" class="tabcontent">
+		<form method="post" action="driver_login.php">
+			<label for="driver_id">Driver ID</label>
+			<input type="password" name="driver_id" required>
+			<label for="password">Password</label>
+			<input type="password" name="password" required>
+			<input type="submit" value="Login">
+		</form>
+	</div>
+
+	<div id="/login_view" class="tabcontent">
+		<form method="post" action="/login_view">
+		{% csrf_token %}
+			<label for="username">Username</label>
+			<input type="text" name="username" required>
+			<label for="password">Password</label>
+			<input type="password" name="password" required>
+			<input type="submit" value="Login">
+
+			<button class="tablinks green-button" onclick="openTab(event, 'forgot')">Forgot Password</button>
+			<h3> </h3>
+			<label> Don't have an account?</label>
+			<button class="tablinks green-button" onclick="openTab(event, '/contact')"> Join as member </button>
+		</form>
+	</div>
+
+	<div id="/contact" class="tabcontent">
+		<form method="post" action="/contact">
+        {% csrf_token %}
+			<label for="username">Username</label>
+			<input type="text" name="username" required>
+			<label for="email">Email</label>
+			<input type="text" name="email" required>
+			<label for="phone">Phone</label>
+			<input type="text" name="phone" required>
+			<label for="password">Password</label>
+			<input type="password" name="password" required>
+			<label for="confirm_password">Confirm Password</label>
+			<input type="password" name="confirm_password" required>
+			<input type="submit" value="Sign Up">
+		</form>
+	</div>
+    
+	<div id="forgot" class="tabcontent">
+		<form method="post" action="reset_password.php">
+			<label for="user_name">Username</label>
+			<input type="text" name="user_name" required>
+			<label for="password">New Password</label>
+			<input type="password" name="password" required>
+			<input type="submit" value="Reset Password">
+		</form>
+	</div>
+
+
+	
+
+</body>
+</html>
