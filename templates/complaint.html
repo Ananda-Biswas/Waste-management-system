@@ -1,0 +1,487 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Waste Management System</title>
+	<style>
+		body {
+			background-image: url('https://i.ibb.co/RP0vq6W/image-MICHRL9ty-transformed.png');
+			background-repeat: repeat;
+			background-size: 100%;
+			background-position: top right;
+		}
+		body,
+		input[type="text"],
+		input[type="password"] {
+			background-color: #222;
+			font-family: Arial, sans-serif;
+			color: #006A80;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 100px;
+			color: #006A80;
+		}
+		.green-button{
+			background-color: #4CAF50;
+			color:white;
+		}
+		form {
+			width: 300px;
+			margin: 0 auto;
+			margin-top: 50px;
+		}
+		input[type="text"],
+		input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: none;
+			border-radius: 3px;
+			background-color: #9FE2BF;
+			color: #222;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+			margin-top: 50px;
+			width: 1250px;
+			margin: 0 auto;
+		}
+		.tab button {
+			background-color: #90EE90;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 40px;
+			transition: 0.3s;
+			font-size: 17px;
+			font-weight: bold;
+		}
+		.tab button:hover {
+			background-color: #006A80;
+		}
+		.tab button.active {
+			background-color: #B4C424;
+		}
+		.tabcontent {
+			background-image: url('https://img.freepik.com/free-vector/spring-floral-watercolor-background-vector-green-with-leaf-illustration_53876-126350.jpg?w=1060&t=st=1690620147~exp=1690620747~hmac=e8ee62e1324a36453a82a9d7c4f75359ad4d6519a8f5e6a25a667e7ad23618db%27');
+			display: none;
+			padding: 6px 15px;
+			border: 1px solid #872657;
+			border-top: none;
+			width: 900px;
+			margin: 0 auto;
+			
+		}
+		
+        
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+	
+		th, td {
+			padding: 5px; 
+		}
+	
+		th {
+			text-align: left;
+		}
+		
+		
+		
+
+		h2 {
+			margin-bottom: 20px;
+			font-size: 24px;
+			font-weight: bold;
+			color: #006A80;
+		}
+
+
+
+		img {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		h3 {
+			margin-top: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.description {
+			margin-bottom: 10px;
+			font-size: 16px;
+			color: #666;
+		}
+
+		.content {
+			font-size: 18px;
+			color: #333;
+		}
+		.description {
+		margin: 25px;
+		color: #222;
+		font-family: Arial, sans-serif;
+		font-size: 17px;
+		line-height: 1.5;
+		font-weight: bold;
+  		}
+		.no-underline {
+		text-decoration: none; /* Remove underline */
+		color: inherit; /* Use the default text color */
+		font-weight: normal; /* Set the font weight to normal */
+		}
+		.complaint-table {
+      background-image: url('https://img.freepik.com/free-vector/spring-floral-watercolor-background-vector-green-with-leaf-illustration_53876-126350.jpg?w=1060&t=st=1690620147~exp=1690620747~hmac=e8ee62e1324a36453a82a9d7c4f75359ad4d6519a8f5e6a25a667e7ad23618db%27');
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+    
+        .complaint-table th, .complaint-table td {
+            border: 1px solid #FF0000;
+            padding: 10px;
+            text-align: center;
+        }
+    
+    
+    
+        .complaint-table tbody tr:nth-child(even) {
+            background-color: "";
+        }
+    
+        .complaint-table tbody tr:hover {
+            background-color: #ddd;
+        }
+		
+		.zoom-image {
+			display: block;
+			transition: transform 0.3s ease-in-out;
+			max-width: 100%;
+			height: auto;
+			margin: 0 auto;
+			
+			
+			border-radius: 10%;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.rate {
+			float: left;
+			height: 46px;
+			padding: 0 10px;
+		}
+		.rate:not(:checked) > input {
+			position:absolute;
+			top:-9999px;
+		}
+		.rate:not(:checked) > label {
+			float:right;
+			width:1em;
+			overflow:hidden;
+			white-space:nowrap;
+			cursor:pointer;
+			font-size:30px;
+			color:#ccc;
+		}
+		.rate:not(:checked) > label:before {
+			content: '★ ';
+		}
+		.rate > input:checked ~ label {
+			color: #ffc700;    
+		}
+		.rate:not(:checked) > label:hover,
+		.rate:not(:checked) > label:hover ~ label {
+			color: #deb217;  
+		}
+		.rate > input:checked + label:hover,
+		.rate > input:checked + label:hover ~ label,
+		.rate > input:checked ~ label:hover,
+		.rate > input:checked ~ label:hover ~ label,
+		.rate > label:hover ~ input:checked ~ label {
+			color: #c59b08;
+		}
+		
+		.feedback{
+			width: 100%;
+			max-width: 780px;
+			background: #fff;
+			margin: 0 auto;
+			padding: 15px;
+			box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
+		}
+		.survey-hr{
+		  margin:10px 0;
+		  border: .5px solid #ddd;
+		}
+		.star-rating {
+		   margin: 25px 0 0px;
+		  font-size: 0;
+		  white-space: nowrap;
+		  display: inline-block;
+		  width: 175px;
+		  height: 35px;
+		  overflow: hidden;
+		  position: relative;
+		  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+		  background-size: contain;
+		}
+		.star-rating i {
+		  opacity: 0;
+		  position: absolute;
+		  left: 0;
+		  top: 0;
+		  height: 100%;
+		  width: 20%;
+		  z-index: 1;
+		  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+		  background-size: contain;
+		}
+		.star-rating input {
+		  -moz-appearance: none;
+		  -webkit-appearance: none;
+		  opacity: 0;
+		  display: inline-block;
+		  width: 20%;
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		  z-index: 2;
+		  position: relative;
+		}
+		.star-rating input:hover + i,
+		.star-rating input:checked + i {
+		  opacity: 1;
+		}
+		.star-rating i ~ i {
+		  width: 40%;
+		}
+		.star-rating i ~ i ~ i {
+		  width: 60%;
+		}
+		.star-rating i ~ i ~ i ~ i {
+		  width: 80%;
+		}
+		.star-rating i ~ i ~ i ~ i ~ i {
+		  width: 100%;
+		}
+		.choice {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  text-align: center;
+		  padding: 20px;
+		  display: block;
+		}
+		span.scale-rating{
+		margin: 5px 0 15px;
+			display: inline-block;
+		   
+			width: 100%;
+		   
+		}
+		span.scale-rating>label {
+		  position:relative;
+			-webkit-appearance: none;
+		  outline:0 !important;
+			border: 1px solid grey;
+			height:33px;
+			margin: 0 5px 0 0;
+		  width: calc(10% - 7px);
+			float: left;
+		  cursor:pointer;
+		}
+		span.scale-rating label {
+		  position:relative;
+			-webkit-appearance: none;
+		  outline:0 !important;
+			height:33px;
+			  
+			margin: 0 5px 0 0;
+		  width: calc(10% - 7px);
+			float: left;
+		  cursor:pointer;
+		}
+		span.scale-rating input[type=radio] {
+		  position:absolute;
+			-webkit-appearance: none;
+		  opacity:0;
+		  outline:0 !important;
+			/*border-right: 1px solid grey;*/
+			height:33px;
+		 
+			margin: 0 5px 0 0;
+		  
+		  width: 100%;
+			float: left;
+		  cursor:pointer;
+		  z-index:3;
+		}
+		span.scale-rating label:hover{
+		background:#fddf8d;
+		}
+		span.scale-rating input[type=radio]:last-child{
+		border-right:0;
+		}
+		span.scale-rating label input[type=radio]:checked ~ label{
+			-webkit-appearance: none;
+		
+			margin: 0;
+		  background:#fddf8d;
+		}
+		span.scale-rating label:before
+		{
+		  content:attr(value);
+			top: 7px;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			right: 0;
+			text-align: center;
+			vertical-align: middle;
+		  z-index:2;
+		}
+	</style>
+
+
+	<script>
+	
+		// Function to switch between tabs
+		function openTab(evt, tabName) {
+			// Declare all variables
+			var i, tabcontent, tablinks;
+	
+			// Get all elements with class="tabcontent" and hide them
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+	
+			// Get all elements with class="tablinks" and remove the class "active"
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+	
+			// Show the current tab, and add an "active" class to the button that opened the tab
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+	
+	</script>
+	
+	
+
+	
+</head>
+
+
+<body>
+	
+
+  
+
+	
+	<table class="complaint-table">
+      <h1>User Complaints</h1>
+			<thead>
+			<tr>
+				<th><u>Name</u></th>
+				<th><u>Area</u></th>
+				<th><u>Locality</u></th>
+				<th><u>Description</u></th>
+				<th><u>Details</u></th>
+                <th><u>Bin Id</u></th>
+                <th><u>Complaint Time</u></th>
+				<th><u>Status</u></th>
+				<th><u>Response Time</u></th>
+				<th><u>Rating</u></th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for complaint in complaints %}
+			<tr>
+				<td>{{ complaint.user_id }}</td>
+				<td>{{ complaint.area }}</td>
+				<td>{{ complaint.locality }}</td>
+				<td>{{ complaint.description }}</td>
+				<td><button class="tablinks" onclick="openTab(event, 'complaint-{{ complaint.id }}')">Image</button></td>
+                <td>{{ complaint.bin_id }}</td>
+				<td>{{ complaint.created_at }}</td>
+				<td>{{ complaint.status }}</td>
+				<td>{{ complaint.completed_at }}</td>
+				<td>
+					{% if complaint.id %}
+							<form method="post" class="complaint-table" action="{% url 'driver_rating' complaint.id %}">
+							{% csrf_token %}
+								<span class="star-rating" >
+									<input type="radio" name="rating" value="1" {% if complaint.rating == 1 %}checked{% endif %}><i></i>
+									<input type="radio" name="rating" value="2" {% if complaint.rating == 2 %}checked{% endif %}><i></i>
+									<input type="radio" name="rating" value="3" {% if complaint.frating == 3 %}checked{% endif %}><i></i>
+									<input type="radio" name="rating" value="4" {% if complaint.rating == 4 %}checked{% endif %}><i></i>
+									<input type="radio" name="rating" value="5" {% if complaint.rating == 5 %}checked{% endif %}><i></i>
+								</span>
+								<input type="submit" value="Submit">
+							</form>
+							
+	
+					{% endif %}
+					</td>
+			</tr>
+			{% endfor %}
+			</tbody>
+	</table>
+	
+
+
+	{% for complaint in complaints %}
+    <div id="complaint-{{ complaint.id }}" class="tabcontent">
+        {% if complaint.image %}
+            <img src="{{ complaint.image.url }}" class="zoom-image" id="image-{{ complaint.id }}">
+            <div>
+                <button onclick="zoomIn('image-{{ complaint.id }}')" class= "green-button">Zoom In</button>
+                <button onclick="zoomOut('image-{{ complaint.id }}')" class= "green-button">Zoom Out</button>
+            </div>
+        {% endif %}
+    </div>
+	{% endfor %}
+
+	<script>
+		function zoomIn(imageId) {
+			var image = document.getElementById(imageId);
+			image.style.transform = "scale(2)"; // Adjust the scale factor as needed
+		}
+
+		function zoomOut(imageId) {
+			var image = document.getElementById(imageId);
+			image.style.transform = "scale(1)"; // Reset to original size
+		}
+	</script>
+
+</body>
+</html>

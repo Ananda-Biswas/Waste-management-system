@@ -1,0 +1,16 @@
+body {
+    background-color: #fff;
+    color: #006A80;
+}
+
+body.dark-mode {
+    background-color: #111;
+    color: #fff;
+}
+
+.dark-mode button {
+    background-color: #666;
+    color: #fff;
+}
+
+/* Add more styles for light mode here */

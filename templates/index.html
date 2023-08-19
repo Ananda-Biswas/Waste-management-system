@@ -7,7 +7,7 @@
     *{
         margin:0;
         padding: 0;
-        font-family: 'Josefin Sans', sans-serif;
+        font-family: 'cursive';
     }
     
     #nav-bar
@@ -136,30 +136,55 @@
     
     
    
+  
+    
+
+    
+    .about-content
+    {   
+        content:#007bff;
+        display: block;
+        padding-top: 0px;
+    }
+    
+   
     #about
     {
-        padding-top: 50px;
-        padding-bottom: 50px;
-        background:#BB8FCE;
-        color:#555;
+        background: #BB8FCE;
+        background-size: cover;
+        background-position: center;
+        color:#555!important;
+        background-attachment: fixed;
+        padding-top:0px;
+        padding-bottom: 0px;
     }
     
     
+    
+    #about h1
+    {
+        text-align: center;
+        color:#555!important;
+        padding-bottom: 10px;
+    }
+    
+    #about h1::after
+    {
+        content:#00ff2dd9;
+        display: block;
+        height:3px;
+        width:170px;
+        margin: 20px auto 5px;
+    }
+
     #about .btn
     {
         margin-top:20px;
         margin-bottom:30px;
         
     }
-    
-    .about-content
-    {   content: #007bff;
-        
-        padding-top: 20px;
-    }
-    
-   
-    
+
+
     #services
     {
         background: #BB8FCE;
@@ -182,7 +207,7 @@
     
     #services h1::after
     {
-        content: ''#007bff;
+        content:#00ff2dd9;
         display: block;
         height:3px;
         width:170px;
@@ -221,14 +246,13 @@
     }
     
     .services .col-md-4:hover{
-        background:#007bff;
+        background:none;
         cursor: pointer;
         transition: 0.7s;
         
     }
     
     
-    /*-------team-------*/
     #team
     {
         padding-top: 50px;
@@ -249,7 +273,7 @@
     h1::after
     {
         content:'';
-        background: #007bff;
+        background: #00ff2dd9;
         display: block;
         height: 3px;
         width: 170px;
@@ -330,7 +354,7 @@
     {
         height: 250px;
         width: 200px;
-        margin: 0px 50px;
+        margin: 10px 50px;
         
         
     }
@@ -360,16 +384,17 @@
     
     .follow
     {
-        background: #fff;
+        background: #BB8FCE;
         padding: 10px;
-        margin: 15px;
+        margin: 0px;
     }
     
     .contact-info .fa
     {
-        margin: 0px;
+        margin: 2px;
         color: #BB8FCE;
         font-weight: bold;
+        margin:10px;
     }
     
     
@@ -674,10 +699,10 @@
                 <h1>Office</h1>
                     <center>
                     <div class="col-md-6 contact-info">
-                        <div class="follow"><b><i class="fa fa-building"></i> </b>Hamid tower, Old Gulshan Avenue, Dhaka-1212.
+                        <div class="follow"><b><i class="fa fa-building"></i> </b>Location: Hamid tower, Old Gulshan Avenue, Dhaka-1212.
                         </div>
-                        <div class="follow"><b><i class="fa fa-mobile"></i> </b>+8801743567890</div>
-                        <div class="follow"><b><i class="fa fa-envelope"></i> </b>wastemanage@gmail.com</div>
+                        <div class="follow"><b><i class="fa fa-mobile"></i> </b>Phone: +8801743567890</div>
+                        <div class="follow"><b><i class="fa fa-envelope"></i> </b>Email: wastemanage@gmail.com</div>
                     
                         </div>
                     </div>
