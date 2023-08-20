@@ -65,7 +65,7 @@
 			border: none;
 			outline: none;
 			cursor: pointer;
-			padding: 14px 40px;
+			padding: 14px 62.9px;
 			transition: 0.3s;
 			font-size: 17px;
 			font-weight: bold;
@@ -458,7 +458,7 @@
 	<div id="bin-{{ bin.id }}" class="tabcontent">
 			<iframe
 				src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d0.1!2d{{ bin.longitude }}!3d{{ bin.latitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1691139529746!5m2!1sen!2sbd"
-				width="800"
+				width="1000"
 				height="600"
 				style="border: 0;"
 				allowfullscreen="true"
@@ -542,7 +542,7 @@
 			<select name="bin_id" id="bin_id">
 			<option value="option">Enter the bin</option>
 				{% for bin in bins %}
-					<option value="{{ bin.id }}">{{ bin.id}}</option>
+					<option value="{{ bin.id }}">Bin {{ bin.id}}</option>
 				{% endfor %}
 			</select>
 			<br>
@@ -577,9 +577,9 @@
 					<td>{{ delivery.bin_id }}</td>
 					<td>
 						{% if delivery.is_scheduled %}
-							<span>😄</span> <!-- Happy emoji for True -->
+							<span>✔️</span> <!-- Happy emoji for True -->
 						{% else %}
-							<span>😔</span> <!-- Sad emoji for False -->
+							<span>❌</span> <!-- Sad emoji for False -->
 						{% endif %}
 					</td>
 					<td>

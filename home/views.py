@@ -190,7 +190,7 @@ def update_bin(request):
 
 def view_bins_driver(request):
     driver_username = request.session.get('driver_username')
-    bins = Bin.objects.filter(driver_details=driver_username)
+    bins = Bin.objects.filter(driver_details_id=driver_username)
     return render(request, 'driver_dashboard.html', {'bins': bins})
 
 
@@ -232,8 +232,7 @@ def record_delivery(request):
         delivery.save()
         
         return redirect('/driver_dashboard')
-    else:
-        return HttpResponse("Platics collected")
+
 
 
 def update_driver(request):
@@ -263,7 +262,6 @@ def view_delivery(request):
 
 def submit_complaint(request):
     member_username = request.session.get('member_username')
-
     if request.method == 'POST':
         area = request.POST.get("area")
         locality = request.POST.get("locality")
